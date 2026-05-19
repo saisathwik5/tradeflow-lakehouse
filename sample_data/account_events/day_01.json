@@ -1,0 +1,3 @@
+{"account_id":"A100","customer_id":"C900","status":"ACTIVE","region":"AMER","credit_limit":250000,"risk_score":3,"event_ts":"2026-01-01T00:00:00Z"}
+{"account_id":"A200","customer_id":"C901","status":"ACTIVE","region":"EMEA","credit_limit":175000,"risk_score":4,"event_ts":"2026-01-01T00:00:00Z"}
+{"account_id":"A300","customer_id":"C902","status":"ACTIVE","region":"AMER","credit_limit":100000,"risk_score":5,"event_ts":"2026-01-15T00:00:00Z"}

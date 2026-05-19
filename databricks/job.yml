@@ -1,0 +1,23 @@
+resources:
+  jobs:
+    tradeflow_lakehouse:
+      name: tradeflow-lakehouse
+      tasks:
+        - task_key: bronze_silver_gold
+          notebook_task:
+            notebook_path: /Repos/tradeflow/databricks/notebooks/tradeflow_job
+            base_parameters:
+              input_path: dbfs:/tradeflow/sample_data
+              warehouse_path: dbfs:/tradeflow/lakehouse
+          new_cluster:
+            spark_version: 15.4.x-scala2.12
+            node_type_id: i3.xlarge
+            num_workers: 1
+            spark_conf:
+              spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions
+              spark.sql.catalog.local: org.apache.iceberg.spark.SparkCatalog
+              spark.sql.catalog.local.type: hadoop
+              spark.sql.catalog.local.warehouse: dbfs:/tradeflow/iceberg
+            libraries:
+              - maven:
+                  coordinates: org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.5.2

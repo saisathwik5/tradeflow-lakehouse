@@ -1,0 +1,2 @@
+{"trade_id":"T1006","account_id":"A300","symbol":"C","side":"BUY","quantity":90,"price":66.80,"trade_ts":"2026-02-01T15:35:00Z","currency":"USD","venue":"ARCX","settlement_date":"2026-02-03"}
+{"trade_id":"T1007","account_id":"A300","symbol":"C","side":"SELL","quantity":45,"price":67.10,"trade_ts":"2026-02-02T14:40:00Z","currency":"USD","venue":"ARCX","settlement_date":"2026-02-04"}

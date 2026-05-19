@@ -1,0 +1,3 @@
+{"trade_id":"T1004","account_id":"A100","symbol":"GS","side":"SELL","quantity":50,"price":397.50,"trade_ts":"2026-02-01T14:30:00Z","currency":"USD","venue":"XNYS","settlement_date":"2026-02-03"}
+{"trade_id":"T1005","account_id":"A200","symbol":"MS","side":"SELL","quantity":40,"price":101.20,"trade_ts":"2026-02-01T15:05:00Z","currency":"USD","venue":"XNYS","settlement_date":"2026-02-03"}
+{"trade_id":"T1006","account_id":"A300","symbol":"C","side":"BUY","quantity":90,"price":66.80,"trade_ts":"2026-02-01T15:35:00Z","currency":"USD","venue":"ARCX","settlement_date":"2026-02-03"}
