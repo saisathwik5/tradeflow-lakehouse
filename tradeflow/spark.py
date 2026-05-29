@@ -2,13 +2,24 @@
 
 from __future__ import annotations
 
+import os
+import sys
 from pathlib import Path
 
 from pyspark.sql import SparkSession
 
 
+def _configure_python_worker() -> str:
+    """Use the current interpreter for PySpark driver and worker processes."""
+    python_executable = sys.executable
+    os.environ.setdefault("PYSPARK_PYTHON", python_executable)
+    os.environ.setdefault("PYSPARK_DRIVER_PYTHON", python_executable)
+    return python_executable
+
+
 def create_spark(app_name: str = "tradeflow-lakehouse") -> SparkSession:
     """Create a local Spark session used by tests and the sample runner."""
+    python_executable = _configure_python_worker()
     return (
         SparkSession.builder.master("local[*]")
         .appName(app_name)
@@ -16,6 +27,8 @@ def create_spark(app_name: str = "tradeflow-lakehouse") -> SparkSession:
         .config("spark.sql.session.timeZone", "UTC")
         .config("spark.driver.host", "127.0.0.1")
         .config("spark.driver.bindAddress", "127.0.0.1")
+        .config("spark.pyspark.python", python_executable)
+        .config("spark.pyspark.driver.python", python_executable)
         .getOrCreate()
     )
 
@@ -31,6 +44,7 @@ def create_iceberg_spark(
     PYSPARK_SUBMIT_ARGS locally. Keeping the config here makes the project easy
     to move between a laptop, Databricks, and CI.
     """
+    python_executable = _configure_python_worker()
     warehouse_path = str(Path(warehouse).resolve())
     return (
         SparkSession.builder.appName(app_name)
@@ -44,5 +58,7 @@ def create_iceberg_spark(
         .config("spark.sql.session.timeZone", "UTC")
         .config("spark.driver.host", "127.0.0.1")
         .config("spark.driver.bindAddress", "127.0.0.1")
+        .config("spark.pyspark.python", python_executable)
+        .config("spark.pyspark.driver.python", python_executable)
         .getOrCreate()
     )
