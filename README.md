@@ -88,7 +88,7 @@ The local runner writes Parquet tables under `lakehouse/` so the project can be
 reviewed without cloud credentials. In Databricks, use the Iceberg session
 settings in `tradeflow/spark.py` and the job template in `databricks/job.yml`.
 
-## Example Outputs
+##  Outputs
 
 After a pipeline run:
 
@@ -123,18 +123,6 @@ compatibility.
 For Iceberg time travel and partition evolution examples, see
 [`sql/iceberg_time_travel.sql`](sql/iceberg_time_travel.sql).
 
-## Resume Bullets
-
-- Built a medallion lakehouse pipeline using Apache Spark to process financial
-  trade events across bronze, silver, and gold layers with audit metadata.
-- Implemented SCD Type 2 temporal account modeling to reconstruct historical
-  account state with `valid_from`, `valid_to`, and `current_flag` semantics.
-- Developed a reconciliation framework for row counts, duplicate detection,
-  checksums, null thresholds, and signed-notional balance validation.
-- Simulated schema evolution across JSON event batches and implemented backward
-  compatible Spark transformations for evolved trade columns.
-- Added Snowflake DDL, Iceberg time-travel SQL, Databricks job configuration,
-  pytest coverage, and CI checks to signal production engineering discipline.
 
 ## Cloud Deployment Notes
 
